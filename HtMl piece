@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Rating App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="container">
+        <h2>Add Movie</h2>
+        <input type="text" id="title" placeholder="Movie Title">
+        <input type="number" id="rating" placeholder="Rating (1-5)">
+        <input type="number" id="year" placeholder="Year">
+        <input type="button" value="Add Movie" id="addMovieBtn">
+        <input type="button" value="Show Movies" id="showMoviesBtn">
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
