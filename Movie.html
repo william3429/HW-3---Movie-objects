@@ -34,9 +34,6 @@
     input[type="button"]:hover {
         background-color: #0056b3;
     }
-    #movie-list {
-        margin-top: 20px;
-    }
 </style>
 </head>
 <body>
@@ -46,8 +43,7 @@
     <input type="number" id="rating" placeholder="Rating (1-5)">
     <input type="number" id="year" placeholder="Year">
     <input type="button" value="Add Movie" onclick="addMovie()">
-    <h2>Show Movies</h2>
-    <div id="movie-list"></div>
+    <input type="button" value="Show Movies" onclick="displayMovies()">
 </div>
 
 <script>
@@ -83,24 +79,24 @@
         document.getElementById('title').value = '';
         document.getElementById('rating').value = '';
         document.getElementById('year').value = '';
-
-        // Show movies
-        showMovies();
     }
 
     // Function to display movies
     function showMovies() {
-        var movieList = document.getElementById('movie-list');
-        movieList.innerHTML = '';
-
         // Loop through movies array and display each movie
         movies.forEach(function(movie) {
-            var listItem = document.createElement('div');
-            listItem.textContent = movie.title + ' - Rating: ' + movie.rating + ' - Year: ' + movie.year;
-            movieList.appendChild(listItem);
+            console.log(movie.title + ' - Rating: ' + movie.rating + ' - Year: ' + movie.year);
         });
+    }
+
+    // Function to display movies when "Show Movies" button is clicked
+    function displayMovies() {
+        // Call showMovies() function to display movies
+        showMovies();
     }
 </script>
 </body>
 </html>
+
+
 
