@@ -1,0 +1,45 @@
+// Constructor function for movie objects
+function Movie(title, rating, year) {
+    this.title = title;
+    this.rating = rating;
+    this.year = year;
+}
+
+// Array to store movies
+var movies = [];
+
+// Function to add a movie
+function addMovie() {
+    var title = document.getElementById('title').value;
+    var rating = parseInt(document.getElementById('rating').value);
+    var year = parseInt(document.getElementById('year').value);
+
+    // Validate input
+    if (title === '' || isNaN(rating) || isNaN(year) || rating < 1 || rating > 5) {
+        alert('Please enter valid data for all fields.');
+        return;
+    }
+
+    // Create new movie object
+    var movie = new Movie(title, rating, year);
+
+    // Add movie to array
+    movies.push(movie);
+
+    // Clear input fields
+    document.getElementById('title').value = '';
+    document.getElementById('rating').value = '';
+    document.getElementById('year').value = '';
+}
+
+// Function to display movies
+function showMovies() {
+    // Loop through movies array and display each movie
+    movies.forEach(function(movie) {
+        console.log(movie.title + ' - Rating: ' + movie.rating + ' - Year: ' + movie.year);
+    });
+}
+
+// Event listeners for buttons
+document.getElementById('addMovieBtn').addEventListener('click', addMovie);
+document.getElementById('showMoviesBtn').addEventListener('click', showMovies);
