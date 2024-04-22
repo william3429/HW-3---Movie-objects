@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Movie Rating App</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+    }
+    #container {
+        width: 400px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    input[type="text"], input[type="number"], input[type="button"] {
+        display: block;
+        margin-bottom: 10px;
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+    }
+    input[type="button"] {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    input[type="button"]:hover {
+        background-color: #0056b3;
+    }
+    #movie-list {
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+<div id="container">
+    <h2>Add Movie</h2>
+    <input type="text" id="title" placeholder="Movie Title">
+    <input type="number" id="rating" placeholder="Rating (1-5)">
+    <input type="number" id="year" placeholder="Year">
+    <input type="button" value="Add Movie" onclick="addMovie()">
+    <h2>Show Movies</h2>
+    <div id="movie-list"></div>
+</div>
+
+<script>
+    // Constructor function for movie objects
+    function Movie(title, rating, year) {
+        this.title = title;
+        this.rating = rating;
+        this.year = year;
+    }
+
+    // Array to store movies
+    var movies = [];
+
+    // Function to add a movie
+    function addMovie() {
+        var title = document.getElementById('title').value;
+        var rating = parseInt(document.getElementById('rating').value);
+        var year = parseInt(document.getElementById('year').value);
+
+        // Validate input
+        if (title === '' || isNaN(rating) || isNaN(year) || rating < 1 || rating > 5) {
+            alert('Please enter valid data for all fields.');
+            return;
+        }
+
+        // Create new movie object
+        var movie = new Movie(title, rating, year);
+
+        // Add movie to array
+        movies.push(movie);
+
+        // Clear input fields
+        document.getElementById('title').value = '';
+        document.getElementById('rating').value = '';
+        document.getElementById('year').value = '';
+
+        // Show movies
+        showMovies();
+    }
+
+    // Function to display movies
+    function showMovies() {
+        var movieList = document.getElementById('movie-list');
+        movieList.innerHTML = '';
+
+        // Loop through movies array and display each movie
+        movies.forEach(function(movie) {
+            var listItem = document.createElement('div');
+            listItem.textContent = movie.title + ' - Rating: ' + movie.rating + ' - Year: ' + movie.year;
+            movieList.appendChild(listItem);
+        });
+    }
+</script>
+</body>
+</html>
+
